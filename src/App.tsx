@@ -18,7 +18,10 @@ function App() {
 
       <div className="contenidoPrincipal">
         <Hero/>
-        <About/>
+
+        <section className="seccion-productos" id="buscador">
+          <ProductSearch />
+        </section>
 
         <section className="seccion-productos" id="productos">
           <div className="titulo-seccion">
@@ -35,10 +38,6 @@ function App() {
 
         <section className="seccion-productos" id="carrito">
           <Cart cart={cart} total={total} onRemove={removeFromCart} onClear={clearCart}/>
-        </section>
-
-        <section className="seccion-productos" id="productos">
-          <ProductSearch />
         </section>
 
       </div>
