@@ -6,8 +6,11 @@ import { About } from './components/About'
 import { ProductCard } from './components/ProductCard'
 import { products } from './data/data'
 import { ProductSearch } from './components/productSearch'
+import { Cart } from './components/cart'
+import { useCart } from './hooks/useCart'
 
 function App() {
+  const { cart, addToCart, removeFromCart, clearCart, total } = useCart()
 
   return (
       <div className="app">
@@ -25,9 +28,13 @@ function App() {
 
           <div className="catalogo">
            {products.map( product => (
-            <ProductCard key={product.id} id={product.id} icon={product.icon} name={product.name} category={product.category} price={product.price} stock={product.stock}/>
+            <ProductCard key={product.id} id={product.id} icon={product.icon} name={product.name} category={product.category} price={product.price} stock={product.stock} onAdd={() => addToCart(product)}/>
            ))}
           </div>
+        </section>
+
+        <section className="seccion-productos" id="carrito">
+          <Cart cart={cart} total={total} onRemove={removeFromCart} onClear={clearCart}/>
         </section>
 
         <section className="seccion-productos" id="productos">

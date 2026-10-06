@@ -5,9 +5,10 @@ interface ProductCardProps {
     category: string
     price: number
     stock: number
+    onAdd?: () => void
 }
 
-export const ProductCard = ({ icon, name, category, price, stock }: ProductCardProps) => {
+export const ProductCard = ({ icon, name, category, price, stock, onAdd }: ProductCardProps) => {
     return (
         <article className="producto">
 
@@ -26,7 +27,7 @@ export const ProductCard = ({ icon, name, category, price, stock }: ProductCardP
             </p>
 
 
-            <button>
+            <button onClick={onAdd}>
                 agregar al carrito
             </button>
         </article>
