@@ -1,4 +1,3 @@
-import { useState } from "react";
 import type { Product } from "../types/Product";
 
 export interface ProductListProps {
@@ -11,7 +10,7 @@ export const ProductList = (props : ProductListProps) => {
             <ul>
                 {props.Products.map(product => (
                     <li key={product.id}>
-                        {product.icon} {product.name} - ${product.price} ({product.stock} available)
+                        <img src={product.image} alt={product.name} width={24} height={24} /> {product.name} - ${product.price} ({product.stock} available)
                     </li>
                 ))}
             </ul>

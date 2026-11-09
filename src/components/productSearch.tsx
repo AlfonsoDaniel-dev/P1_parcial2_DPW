@@ -4,9 +4,15 @@ import { useSearchByCategory } from "../hooks/useSearchByCategory";
 
 import { ProductCard } from "./ProductCard";
 
-export const ProductSearch = () => {
-    const { Products, onChange } = useSearch();
-    const { ProductsByCategory, categories, onChangeCategory } = useSearchByCategory();
+import type { Product } from "../types/Product";
+
+interface ProductSearchProps {
+    products: Product[]
+}
+
+export const ProductSearch = ({ products }: ProductSearchProps) => {
+    const { Products, onChange } = useSearch(products);
+    const { ProductsByCategory, categories, onChangeCategory } = useSearchByCategory(products);
 
     return (
         <>

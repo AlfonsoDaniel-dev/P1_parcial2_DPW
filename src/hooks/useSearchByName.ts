@@ -1,6 +1,5 @@
 import { useState } from "react";
 import type { Product } from "../types/Product";
-import { products } from "../data/data";
 
 interface UseSearchReturn {
     Products: Product[];
@@ -8,15 +7,14 @@ interface UseSearchReturn {
     search: (searchParameter: string) => void;
 }
 
-export const useSearch = (): UseSearchReturn => {
+export const useSearch = (products: Product[]): UseSearchReturn => {
     const [Products, setProducts] = useState<Product[]>([]);
 
     const search = (searchParameter: string) => {
         const term = searchParameter.trim().toLowerCase();
-        const filteredProducts = products.filter(product =>
+        setProducts(products.filter(product =>
             product.name.toLowerCase().includes(term)
-        );
-        setProducts([...filteredProducts]);
+        ));
     };
 
     const onChange = (searchParameter: string) => {
