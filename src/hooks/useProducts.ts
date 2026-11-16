@@ -26,7 +26,9 @@ export const useProducts = (): UseProductsReturn => {
 
                 const response = await fetch(API_URL);
 
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                if (!response.ok) {
+                    throw new Error(`error ${response.status}`);
+                }
 
                 const data: ApiProduct[] = await response.json();
 
